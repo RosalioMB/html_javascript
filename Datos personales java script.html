@@ -1,0 +1,31 @@
+<html>
+<head>
+<script type="text/javascript">  // el script sera de tipo java script
+function DatosPersonales() { //funcion de java script
+//Ingresamos un mensaje a mostrar
+var nombre = prompt("¿Cuál es tu Nombre?", "");
+var anos = prompt("¿Cuál es tu edad?", "");
+var altura = prompt("¿cuanto mides?", "");
+var peso = prompt("¿Cuál es tu peso", "");
+var comida_favorita = prompt("¿Cuál es tu comida favorita?", "");
+
+//Detectamos si el usuario ingreso todos los valores correspondientes
+if (nombre != null && anos != null && altura != null && peso != null && comida_favorita != null ){
+alert("Tu nombre es " + nombre + "\n Tu edad es de " + anos +
+"\n Tu altura es de  " + altura + "\n Tu peso es de " + peso + " kilogramos" + "\n Tu comida favorita es " + comida_favorita
+	);
+} 
+//Detectamos si el usuario NO ingreso un valor
+else {
+alert("No has ingresado un dato correctamente");
+}
+}
+</script>
+</head>
+<body>
+<form>
+	<!-- boton con el que se ejecutara la funcion de javascript -->
+<input type="button" onclick="DatosPersonales()" value="Click para ingresar tus datos personales" />
+</form>
+</body>
+</html>

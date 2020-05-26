@@ -1,0 +1,71 @@
+ <!DOCTYPE html>  
+ <html>  
+ <body>  
+ <h1>Detecta cual es el mayor, el de amedias y el menor de los Enteros</h1>  
+ <p>Por favor, introduce dos números enteros:</p>  
+ <input id="num1"><br>  
+ <input id="num2"><br>
+ <input id="num3"> 
+ <!-- Creamos los eventos al dar clik de cada boton asignandoles una funcion de java script --> 
+ <button type="button" onclick="Rela()">Relacion</button>
+
+ <p id="resultado"></p>  
+ <script type="text/javascript">  
+
+
+ function Rela() {  //Funcion Para sumar
+   var x,y,resultado,text;  
+   x = document.getElementById("num1").value;  
+   y = document.getElementById("num2").value;
+   z = document.getElementById("num3").value;
+
+   if (isNaN(x) || (x % 1 !== 0) || isNaN(y) || (y % 1 !== 0) || isNaN(z) || (z % 1 !== 0) ) { 
+
+     text = "Es necesarios introducir tres números válidos";  
+   } else if ((x == y) && (y == z) ){  
+     //si no ponemos parseFloat concatenaría x con y  
+
+      text = "Los tres numeros son iguales";
+   } else {
+
+    x = parseInt(x);
+    y = parseInt(y);
+    z = parseInt(z);
+
+    if ( (x > z) && (y < x) ) {
+
+      if (z > y){
+        text = "El numero mayor aqui es: " + x + "\n El numero de amedias es: "+ z +"\n El numero menor es: " + y;
+      } else {
+         text = "El numero mayor es: " + x + "\n El numero de amedias es: "+ y +"\n El numero menor es: " + z;
+      }
+ 
+      } else  if ((y > z) && (x < y) ) {
+
+      if (z > x){
+        text = "El numero mayor es: " + y + "\n El numero de amedias es: "+ z +"\n El numero menor es: " + x;
+      } else {
+         text = "El numero mayor es: " + y + "\n El numero de amedias es: "+ x +"\n El numero menor es: " + z;
+      }
+ 
+      } else  if ((z > x) && (z > y) ) {
+
+      if (y > x){
+        text = "El numero mayor es: " + z + "\n El numero de amedias es: "+ y +"\n El numero menor es: " + x;
+      } else {
+         text = "El numero mayor es: " + z + "\n El numero de amedias es: "+ x +"\n El numero menor es: " + y;
+      }
+ 
+      }
+
+
+   }     
+
+    document.getElementById("resultado").innerHTML = text; //en nuestra etiqueta de texto le damos
+    //el valor que nos da al dar la operacion
+                              }
+
+  
+ </script>  
+ </body>  
+ </html> 

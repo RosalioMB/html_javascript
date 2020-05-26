@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mi Pagina</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head>
+
+<body style="background-color:#FF0000;">
+<div data-role="page">
+	
+	<div data-role="header"> <h1>Chalio</h1> </div>
+
+	<div data-role="content">
+		<a href="C:\Users\ASUS\Desktop\Semestre 8vo\jose luis\Agenda.html"><h1>MI AGENDA</h1></a><br>
+		<h1><p> MIS LISTAS </p></h1>
+
+		<ul data-role="listview" data-theme="g" >
+			<li>Flores favoritas</a>  
+				<ul data-role="listview">
+					<li> ROSAS</li>
+					<li> GIRASOLES</li>
+					<li> HORTENSIAS</li>
+				</ul>
+
+
+			</li>
+			
+			<li> Paginas de mi agrado</a>  
+				<ul data-role="listview">
+					<li> <a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+					<li> <a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
+					<li> <a href="https://www.Google.com/" target="_blank">Google</a></li>
+				</ul>
+			</li>
+
+
+						<li> Mis cosas favoritas ordenadas Ordenadas</a>  
+                <ol data-role="listview">
+					<li> JUGAR VIDEOJUEGOS</li>
+					<li> DOS</li>
+					<li> TRES</li>
+				</ol>
+
+
+			</li>
+
+						<li> COSAS QUE ME ASUSTAN</a>  
+                <ul data-role="listview">
+					<li> <input type="text" name="campo_de_texto" value="ARAÑAS" readonly="readonly" > </li>
+					<li> <input type="text" name="campo_de_texto" value="SERPIENTES" readonly="readonly" > </li>
+					<li> <input type="text" name="campo_de_texto" value="ALACRANES" readonly="readonly" > </li>
+				</ul>
+
+
+			</li>
+
+
+
+
+						<li> Mis imagenes favoritas</a>  
+                <ul data-role="listview" >
+					<li> <img src="C:\Users\ASUS\Desktop\paisaje1.jpg"  ></li>
+					<li> <img src="C:\Users\ASUS\Desktop\paisaje2.jpg"  > </li>
+					<li> <img src="C:\Users\ASUS\Desktop\paisaje3.jpg"  ></li>
+				</ul>
+
+
+			</li>
+
+
+
+						<li> MIS COSAS FAVORITAS</a>  
+		<ul data-role="listview" data-inset="true" data-filter="true">
+			<li>PERROS/li>
+			<li>CARROS</li>
+			<li>FLORES</li>
+			<li>VIDEOJUEGOS</li>
+
+			 </ul>
+			</li>
+			 </ul>
+<a href="C:\Users\ASUS\Desktop\Semestre 8vo\jose luis\DATOSPERSONALES.html"><h1>MIS DATOS PERSONALES</h1></a> <br>
+			<center> <H1>LLENA ESTE FORMULARIO</H1></center>
+			<div dta-role="fieldcontain">
+		<label for="name">Nombre</label>
+		<input type="text" name="name" id="name" value="">
+		<label for="email">Correo Electronico</label>
+		<input type="email" name="email" id="email" value="">
+		<label for="password">Contraseña</label>
+		<input type="password" name="password" id="password" value="">
+		<label for="age">Edad</label>
+		<input type="number" name="age" id="age" value="">
+		<label for="url">URL</label>
+		<input type="url" name="url" id="url" value="">
+		<label for="telephone">Telefono</label>
+		<input type="tel" name="telephone" id="telephone" value="">
+	</div>
+	<center> <H1>¿CUANTOS AÑOS TIENES?</H1></center>
+	<div data-role="fieldcontain">
+			<label for="age">Edad</label>
+			<input type="range" name="age" id="age"  value="25" min="0" max="100">
+		</div>
+<center> <H1>¿TIENES CORONAVIRUS?</H1></center>
+<div data-role="fieldcontain">
+			<label for="casado">Coronavirus</label>
+			<select name="casado" id="casado" data-role="slider">
+				<option value="no"> No </option>
+				<option value="si">Si</option>
+			</select>
+		</div>
+<center> <H1>SELECCIONA TU COLOR FAVORITO</H1></center>
+<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+				<legend>Selecciona tu color favorito</legend>
+				<input type="radio" name="radio-choice-1" id="radio-choice-1" value="rojo" checked="checked"/>
+				<label for="radio-choice-1">Rojo</label>
+
+				<input type="radio" name="radio-choice-1" id="radio-choice-2" value="azul" />
+				<label for="radio-choice-2">Azul</label>
+
+				<input type="radio" name="radio-choice-1" id="radio-choice-3" value="verde" />
+				<label for="radio-choice-3">Verde</label>
+
+				<input type="radio" name="radio-choice-1" id="radio-choice-4" value="Negro" />
+				<label for="radio-choice-4">Negro</label>
+			</fieldset>
+		</div>
+<center> <H1>SELECCIONA TUS CARROS FAVORITOS</H1></center>
+<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+				<legend>CARROS</legend>
+				<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custon" />
+				<label for="checkbox-1">ford</label>
+
+				<input type="checkbox" name="checkbox-2" id="checkbox-2" class="custon" />
+				<label for="checkbox-2">chevrolet</label>
+
+				<input type="checkbox" name="checkbox-3" id="checkbox-3" class="custon" />
+				<label for="checkbox-3">mustang</label>
+			</fieldset>
+		</div>
+
+
+ <style type="text/css">
+  .boton_1{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+   
+    border: 2px solid #4324E1;
+  }
+  .boton_1:hover{
+    background-color: #24E1A5;
+  }
+</style>
+
+<a class="boton_1" href="https://www.youtube.com/" target="_blank"> Youtube</a> <br><br><br>
+
+
+
+<a href="C:\Users\ASUS\Desktop\Semestre 8vo\jose luis\primer.html">primer ejercicio</a><br>
+
+
+	</div>
+	
+	<div data-role="footer">
+<h4> Consulta tu tecnologico en: <a href="http://www.itocotlan.com/">Instituto Tecnologico de Ocotlan</a></h4> <br/>
+	</div>
+</div>
+
+	
+</body>
+</html>

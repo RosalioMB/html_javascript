@@ -1,0 +1,40 @@
+ <!DOCTYPE html>  
+ <html>  
+ <body>  
+ <h1>Serie de Cuadrados de Fibonacci</h1>  
+ <p>Por favor, introduce un numero entero: </p>  
+ <input id="num1"> 
+ <!-- Creamos los eventos al dar clik de cada boton asignandoles una funcion de java script --> 
+ <button type="button" onclick="fibo()">Serie de Fibonacci</button>
+
+ <p id="resultadofibo"></p>  
+ <script type="text/javascript">  
+
+
+ function fibo() {  //Funcion Para serie de fobonaci
+   var x, text="1";  
+   x = document.getElementById("num1").value;
+   if (isNaN(x) || (x % 1 !== 0) ) { 
+
+
+     text = "Es necesarios introducir un numero valido";  
+   } else {  
+    x = parseInt(x); 
+    var a=0,b=1,c,s=1;
+    //procedimiento para la serie 
+    for(i = 2; i<=x; i++){
+        c=a+b;
+        text = text + ", " + c*c ;
+        s = s +c;
+        a =b;
+        b=c;
+      }
+
+   } 
+
+    document.getElementById("resultadofibo").innerHTML = text; //etiqueta donde se mostrara la serie
+      }
+  
+ </script>  
+ </body>  
+ </html> 

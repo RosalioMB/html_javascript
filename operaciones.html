@@ -1,0 +1,34 @@
+ <!DOCTYPE html>  
+ <html>  
+ <body>  
+ <h1>Operaciones Numericas con Enteros</h1>  
+ <p>Por favor, introduce dos números enteros:</p>  
+ <input id="num1"><br>  
+ <input id="num2"><br>
+ <input id="num3"> 
+ <!-- Creamos los eventos al dar clik de cada boton asignandoles una funcion de java script --> 
+ <button type="button" onclick="Rela()">Relacion</button>
+
+ <p id="resultado"></p>  
+ <script type="text/javascript">  
+
+
+ function Rela() {  //Funcion Para sumar
+   var x,y,resultado,text;  
+   x = document.getElementById("num1").value;  
+   y = document.getElementById("num2").value;
+   z = document.getElementById("num2").value;  
+   if ( x === z && z === y ) { 
+     text = "Todos Son iguales ";  
+   } else {  
+        text = "Son diferentes "; 
+   }      
+
+    document.getElementById("resultado").innerHTML = text; //en nuestra etiqueta de texto le damos
+    //el valor que nos da al dar la operacion
+                              }
+
+  
+ </script>  
+ </body>  
+ </html> 

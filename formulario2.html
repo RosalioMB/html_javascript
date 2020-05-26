@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Probando jQuery Mobile</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+</head>
+
+<body>
+<div data-role="page">
+	<div data-role="header"> <h5>Formularios JQuery Mobile</h5></div>
+	<div dta-role="fieldcontain">
+		<label for="name">Nombre</label>
+		<input type="text" name="name" id="name" value="">
+		<div data-role="fieldcontain">
+			<label for="name">Nombre</label>
+			<input type="text" name="name" id="name" value="">
+		</div>
+
+		<div data-role="fieldcontain">
+			<label for="description">Describir</label>
+			<textarea name="description" id="description" ></textarea>
+		</div>
+
+
+		<div data-role="fieldcontain">
+			<label for="search">Buscar</label>
+			<input type="search" name="search" id="search" placeholder="Texto a buscar" value="">
+		</div>
+
+
+		<div data-role="fieldcontain">
+			<label for="age">Edad</label>
+			<input type="range" name="age" id="age"  value="25" min="0" max="100">
+		</div>
+
+
+
+		<div data-role="fieldcontain">
+			<label for="casado">Casado</label>
+			<select name="casado" id="casado" data-role="slider">
+				<option value="no"> No </option>
+				<option value="si">Si</option>
+			</select>
+		</div>
+
+	</div>
+	<div data-role="footer">
+		<h4>Consulta tu Tecnologico en : <br><a href="http://www.itocotlan.com/">Instituto Tecnologico de Ocotlan</a></h4>
+	</div>
+</div>
+</body>
+</html>

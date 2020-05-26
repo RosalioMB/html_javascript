@@ -1,0 +1,667 @@
+ <!DOCTYPE html>  
+ <html>
+<body> 
+  <h1>Arreglos </h1>  
+ <p>Por favor, introduce los datos que se te piden </p>  
+ <p>Nombre: <input type="text" name="Nombre" id="Nombre" size="40">
+ <button type="button" onclick="Buscar()">Buscar</button> 
+ </p>  
+ <p>Telefono: <input type="tel" name="Telefono" id="Telefono"></p>
+ <p>Correo Electronico: <input type="email" name="correo" id="correo" min="1900"></p>
+ <!-- Creamos los eventos al dar clik de cada boton asignandoles una funcion de java script --> 
+ <button type="button" onclick="agregar()">Agregar datos</button>
+ <button type="button" onclick="Eliminar()">Eliminar</button>
+ <button type="button" onclick="Editar()">Editar</button>
+ <button type="button" onclick="mt()">Mostrar Todos</button>  
+  
+ <p id="cont_tabla"></p>  
+ <script type="text/javascript">  
+    var datos = [];
+    alert("si se ve" );
+    var borrar = 0;
+
+
+
+ function agregar() {  //Funcion Para agregar usuarios
+   var name,phone,email,text;  
+   name = document.getElementById("Nombre").value;  
+   phone = document.getElementById("Telefono").value;
+   email = document.getElementById("correo").value;
+
+
+
+   name = name.toString();
+   phone = phone.toString();
+   email = email.toString();
+
+  var guda = verificar();
+
+   
+
+   if (guda == 0 ) {
+
+   datos.unshift(name,phone,email); 
+
+   document.getElementById("Nombre").value = "";
+   document.getElementById("Telefono").value = "";
+   document.getElementById("correo").value = "";
+   alert("Los datos fueron agregados correctamente " );
+  } else {
+     alert("Verifique que los datos esten correctamente" );
+  }
+
+
+
+
+}
+
+
+
+
+function verificar(){
+
+  var name,phone,email;
+  var cor = 1;  
+   name = document.getElementById("Nombre").value;  
+   phone = document.getElementById("Telefono").value;
+   email = document.getElementById("correo").value;
+
+   name = name.toString();
+   phone = phone.toString();
+   email = email.toString();
+
+   //1 no estan los datos correctos
+   // 0 los datos estan correctos
+
+
+  if(name == null || name.length == 0 || /^\s+$/.test(name) ){
+     cor = 1;
+  } else if (phone == null || phone.length == 0 || /^\s+$/.test(phone) ){ 
+    cor = 1;
+  } else if (email == null || email.length == 0 || /^\s+$/.test(email) ){ 
+    cor = 1;
+  }
+
+  else {
+
+    cor = 0;
+  }
+
+ return cor; 
+
+}
+
+
+
+
+
+
+ function Buscar() {  //Funcion Para agregar usuarios
+              // Obtener la referencia del elemento body
+   var name;
+   name = document.getElementById("Nombre").value;  
+
+   name = name.toString();
+  if(name == null || name.length == 0 || /^\s+$/.test(name) ){ 
+    alert("El nombre a buscar no esta escrito correctamente " );
+
+  }
+   else {
+
+  var body = document.getElementsByTagName("body")[0];
+
+
+            // Crea un elemento <table> y un elemento <tbody>
+   var tabla   = document.createElement("table");
+
+   
+
+   var tblBody = document.createElement("tbody");
+
+
+
+   var Nencontro=0;  
+   name = document.getElementById("Nombre").value;  
+
+  var cabezera = false;
+   name = name.toString();
+  var cont = 0;
+
+   for (var i = 0; i < datos.length+1; i++) {
+
+
+    if(name == datos[i] && cont == 0 ){
+        cont = 0;
+       
+       //alert("entro al if en " + i );
+       
+          if (cabezera == false){
+
+              var hilera = document.createElement("tr");
+       
+        // Crea las celdas
+            // Crea las hileras de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Nombre");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Telefono");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Email");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            tblBody.appendChild(hilera);
+
+            var hilera = document.createElement("tr");
+
+            cabezera = true;
+          }
+
+
+          var hilera = document.createElement("tr");
+        
+       for (var j = 0; j < 3; j++) {
+
+        if(datos[i+j] != "eliminado"){         
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode(datos[i+j]);
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda); }
+
+        if (j==2){
+
+           tblBody.appendChild(hilera);
+
+        }
+
+        }
+
+
+       
+
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+         
+        
+           }
+
+             cont++;
+           if (cont === 3){
+            cont = 0;
+           }
+
+          }
+
+
+
+    if(cabezera == true){
+     // window.alert("si llegamos al tre");
+      body.removeChild(body.childNodes[24]);
+      // posiciona el <tbody> debajo del elemento <table>
+      tabla.appendChild(tblBody);
+      // appends <table> into <body>
+      body.appendChild(tabla);
+      // modifica el atributo "border" de la tabla y lo fija a "2";
+      tabla.setAttribute("border", "2");
+
+      tabla.style.color="red";
+
+      alert("El nombre a buscar si se encontro" );
+
+
+           } else {
+
+            alert("El nombre a buscar no se encontro" );
+
+           }
+
+         }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ function Eliminar() {  //Funcion Para agregar usuarios
+              // Obtener la referencia del elemento body
+var datosencontrados = 0;
+
+
+function alerta_eliminar() {
+    //var mensaje;
+    var opcion = confirm("Decea eliminar el dato encontrado \n " + 
+      "Los datos son: \n Nombre: " + datos[datosencontrados] + "\n Telefono: " + datos[datosencontrados+1] 
+      + "\n Correo: " + datos[datosencontrados+2]
+      );
+    if (opcion == true) {
+        datos[datosencontrados] = "eliminado";
+        datos[datosencontrados+1] = "eliminado";
+        datos[datosencontrados+2] = "eliminado";
+        alert("El dato fue eliminado " );
+  } else {
+      alert("El dato no se elimino" );
+  }
+  
+}
+
+
+
+  var body = document.getElementsByTagName("body")[0];
+
+
+            // Crea un elemento <table> y un elemento <tbody>
+   var tabla   = document.createElement("table");
+
+   
+
+   var tblBody = document.createElement("tbody");
+
+
+
+   var Nencontro=0;  
+   name = document.getElementById("Nombre").value;  
+
+  var cabezera = false;
+   name = name.toString();
+   var cont = 0;
+
+
+   for (var i = 0; i < datos.length+1; i++) {
+    
+
+    if(name == datos[i] && cont === 0 ){
+      cont = 0;
+      //alert("entro al for " );
+       
+          if (cabezera == false){
+
+              var hilera = document.createElement("tr");
+       
+        // Crea las celdas
+            // Crea las hileras de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Nombre");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Telefono");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Email");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            tblBody.appendChild(hilera);
+
+            var hilera = document.createElement("tr");
+
+            cabezera = true;
+          }
+
+
+          var hilera = document.createElement("tr");
+        
+       for (var j = 0; j < 3; j++) {
+
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode(datos[i+j]);
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda);
+
+        if (j==2){
+
+           tblBody.appendChild(hilera);
+
+        }
+
+        }
+
+
+       
+
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+            datosencontrados = i;
+             alerta_eliminar();
+           }
+
+
+            cont++;
+           if (cont === 3){
+            cont = 0;
+           }
+
+           
+
+          }
+
+
+
+    if(cabezera == true){
+     // window.alert("si llegamos al tre");
+      body.removeChild(body.childNodes[24]);
+      // posiciona el <tbody> debajo del elemento <table>
+      tabla.appendChild(tblBody);
+      // appends <table> into <body>
+      body.appendChild(tabla);
+      // modifica el atributo "border" de la tabla y lo fija a "2";
+      tabla.setAttribute("border", "2");
+
+      tabla.style.color="red";
+
+      mt();
+           } else {
+            alert("No se encontro el nombre a eliminar" );
+           }
+
+}
+
+
+
+
+
+ function Editar() {  //Funcion Para agregar usuarios
+              // Obtener la referencia del elemento body
+var datosencontrados = 0;
+
+
+
+function editar_email_telefono() {
+//Ingresamos un mensaje a mostrar
+var elige = prompt("Escribe 1 para editar el telefono \n 2 para editar correo electronico", "");
+//Detectamos si el usuario ingreso un valor
+if (elige == "1" || elige == "2"){
+
+  if (elige == 2 ){
+ var correo_nuevo = prompt("Escribe el nuevo correo", "");
+ datos[datosencontrados+2] = correo_nuevo;
+ alert("El dato fue editado correctamente " );
+  } else {
+  var telefono_nuevo = prompt("Escribe el nuevo telefono ", "");
+  datos[datosencontrados+1] = telefono_nuevo;
+  alert("El dato fue editado correctamente " );
+  }
+
+}
+//Detectamos si el usuario NO ingreso un valor
+else {
+alert("No ingresaste una opcion valida ");
+}
+
+}
+
+
+function alerta_editar() {
+    var mensaje;
+    var opcion = confirm("Decea editar el siguiente usuario \n " + 
+      "Los datos son: \n Nombre: " + datos[datosencontrados] + "\n Telefono: " + datos[datosencontrados+1] 
+      + "\n Correo: " + datos[datosencontrados+2]
+      );
+    if (opcion == true) {
+
+
+        editar_email_telefono();
+      
+  } else {
+      alert("El dato no se edito" );
+  }
+  
+}
+
+
+
+  var body = document.getElementsByTagName("body")[0];
+
+
+            // Crea un elemento <table> y un elemento <tbody>
+   var tabla   = document.createElement("table");
+
+   
+
+   var tblBody = document.createElement("tbody");
+
+
+
+   var Nencontro=0;  
+   name = document.getElementById("Nombre").value;  
+
+  var cabezera = false;
+   name = name.toString();
+   var cont = 0;
+
+   for (var i = 0; i < datos.length+1; i++) {
+
+
+//alert("Los datos del arreglo son: " + datos[i] + " \n Valor de cont es: " + cont );
+
+    if(name == datos[i] && cont === 0 ){
+      cont = 0;
+       
+          if (cabezera == false){
+
+              var hilera = document.createElement("tr");
+       
+        // Crea las celdas
+            // Crea las hileras de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Nombre");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Telefono");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Email");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            tblBody.appendChild(hilera);
+
+            var hilera = document.createElement("tr");
+
+            cabezera = true;
+          }
+
+
+          var hilera = document.createElement("tr");
+        
+       for (var j = 0; j < 3; j++) {
+
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode(datos[i+j]);
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda);
+
+        if (j==2){
+
+           tblBody.appendChild(hilera);
+
+        }
+
+        }
+
+
+       
+
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+            datosencontrados = i;
+             alerta_editar();
+           }
+
+            cont++;
+           if (cont === 3){
+            cont = 0;
+           }
+
+          }
+
+
+
+    if(cabezera == true){
+     // window.alert("si llegamos al tre");
+      body.removeChild(body.childNodes[24]);
+      // posiciona el <tbody> debajo del elemento <table>
+      tabla.appendChild(tblBody);
+      // appends <table> into <body>
+      body.appendChild(tabla);
+      // modifica el atributo "border" de la tabla y lo fija a "2";
+      tabla.setAttribute("border", "2");
+
+      tabla.style.color="green";
+
+      mt();
+           } else {
+            alert("No se encontro el nombre a editar" );
+           }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ function mt(){ //funcion para buscar todos los agregados 
+ // Obtener la referencia del elemento body
+
+
+  var n = 0;
+  var body = document.getElementsByTagName("body")[0];
+  var tabla   = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+  
+
+
+
+  var imprimir_dato = 0;
+  var cabezera = false;
+  var cont = 0;
+  var siHayDatos = false ;
+
+   for (var i = 0; i < datos.length; i++) {
+
+       //alert("entro al if en " + i );
+
+      // alert("LOS DATOS EN HORDEN SON: " + datos[i] );
+
+       if( cont === 0 ){
+        cont =0;
+       
+          if (cabezera == false){
+
+              var hilera = document.createElement("tr");
+       
+        // Crea las celdas
+            // Crea las hileras de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Nombre");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Telefono");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode("Email");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+
+            tblBody.appendChild(hilera);
+
+            var hilera = document.createElement("tr");
+
+            cabezera = true;
+          }
+
+
+          var hilera = document.createElement("tr");
+        
+       for (var j = 0; j < 3; j++) {
+
+        if(datos[i+j] != "eliminado"){         
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode(datos[i+j]);
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda);
+
+        siHayDatos = true; 
+
+      }
+
+        if (j==2){
+
+           tblBody.appendChild(hilera);
+
+        }
+
+        }
+           
+          }
+
+           cont++;
+           if (cont === 3){
+            cont = 0;
+           }
+  
+}
+  //tblbody.parentNode.removeChild(hilera);
+ 
+if (siHayDatos == true){
+  // posiciona el <tbody> debajo del elemento <table>
+  body.removeChild(body.childNodes[24]);
+  tabla.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tabla);
+  // modifica el atributo "border" de la tabla y lo fija a "2";
+  tabla.setAttribute("border", "2"); 
+} else {
+  alert("No hay datos para mostrar" );
+  body.removeChild(body.childNodes[24]);
+}
+
+
+
+borrar = 2;
+  
+
+}
+
+
+
+
+  
+ </script>  
+ </body>  
+ </html> 

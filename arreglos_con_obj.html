@@ -1,0 +1,73 @@
+ <!DOCTYPE html>  
+ <html>
+<body> 
+  <h1>Arreglos </h1>  
+ <p>Por favor, introduce los datos que se te piden </p>  
+ <p>Nombre: <input type="text" name="Nombre" id="Nombre" size="40">
+ <button type="button" onclick="Buscar()">Buscar</button> 
+ </p>  
+ <p>Telefono: <input type="tel" name="Telefono" id="Telefono"></p>
+ <p>Correo Electronico: <input type="email" name="correo" id="correo" min="1900"></p>
+ <!-- Creamos los eventos al dar clik de cada boton asignandoles una funcion de java script --> 
+ <button type="button" onclick="agregar()">Agregar datos</button>
+ <button type="button" onclick="Eliminar()">Eliminar</button>
+ <button type="button" onclick="Editar()">Editar</button>
+ <button type="button" onclick="mt()">Mostrar Todos</button>  
+  
+ <p id="cont_tabla"></p>  
+   <script type="text/javascript"> 
+   alert("Los datos no estan correctos" ); 
+    var Ar_name = [];
+    var Ar_phone = [];
+    var Ar_email = [];
+   var name,phone,email;  
+   name = document.getElementById("Nombre").value;  
+   phone = document.getElementById("Telefono").value;
+   email = document.getElementById("correo").value;
+
+    var borrar = 0;
+
+    var Persona = new persona(name, phone, email);
+    
+    function persona(Nm, PH, EM) { 
+
+      this.nom = Nm;
+      this.pho = PH;
+      this.corr = EM;
+
+
+      this.verificar = function() 
+      {
+          var cor = 1;
+
+          if(Persona.nom == null || Persona.nom.length == 0 || /^\s+$/.test(Persona.nom) ){
+             cor = 1;
+          } else if (Persona.pho == null || Persona.pho.length == 0 || /^\s+$/.test(Persona.pho) ){ 
+            cor = 1;
+          } else if (Persona.corr == null || Persona.corr.length == 0 || /^\s+$/.test(Persona.corr) ){ 
+            cor = 1;
+          }
+          else {
+            cor = 0;
+            Ar_name.unshift(Persona.nom);
+            Ar_phone.unshift(Persona.pho);
+            Ar_email.unshift(Persona.corr);
+          }
+
+         return cor; 
+      }; //cierra funcion verificar 
+
+    } //cierra el objeto persona
+
+function agregar(){
+ // alert("Lse da clik en agregar: " + Persona.verificar());
+    if (Persona.verificar() == 0){
+      alert("Los datos se agregaron correctamente" );
+    } else {
+      alert("No se agregaron los datos" );
+    }
+  } //termina funcion agregar 
+
+    </script>  
+ </body>  
+ </html> 
